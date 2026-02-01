@@ -102,6 +102,29 @@ cd cad_agent
 
 ---
 
+## 推送到 GitHub
+
+本地已初始化 Git 并完成首次提交（分支 `main`）。推送到 GitHub 步骤：
+
+1. **在 GitHub 上新建仓库**  
+   打开 [GitHub New Repository](https://github.com/new)，仓库名建议 `cad-plate-dxf` 或 `vibe_coding`，不勾选「Initialize with README」（本地已有）。
+
+2. **添加远程并推送**（将 `<你的用户名>` 和 `<仓库名>` 替换为实际值）：
+   ```bash
+   cd /Users/chu/vibe_coding
+   git remote add origin https://github.com/<你的用户名>/<仓库名>.git
+   git push -u origin main
+   ```
+   若使用 SSH：
+   ```bash
+   git remote add origin git@github.com:<你的用户名>/<仓库名>.git
+   git push -u origin main
+   ```
+
+3. 推送完成后，在 README 里把「克隆与依赖」中的 `<你的用户名>/<仓库名>` 改成实际地址即可。
+
+---
+
 ## 许可证
 
 MIT 或按需自定。
