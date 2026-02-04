@@ -1,0 +1,90 @@
+{
+  "metadata": {
+    "name": "齿轮标准库",
+    "version": "1.0",
+    "standard": "GB/T 1357-2008",
+    "description": "标准模数系列和齿轮参数"
+  },
+  "modules": {
+    "standard": {
+      "name": "标准模数系列",
+      "description": "常用标准模数（mm）",
+      "values": [1, 1.25, 1.5, 2, 2.5, 3, 4, 5, 6, 8, 10, 12, 16, 20, 25, 32],
+      "notes": "优先选用第一系列：1, 1.5, 2, 2.5, 3, 4, 5, 6, 8, 10, 12, 16, 20, 25, 32"
+    }
+  },
+  "pressure_angles": {
+    "standard": {
+      "name": "标准压力角",
+      "description": "常用压力角（度）",
+      "values": [20, 14.5, 25],
+      "default": 20,
+      "notes": "20°为最常用的标准压力角"
+    }
+  },
+  "teeth_recommendations": {
+    "min_teeth_standard": {
+      "value": 17,
+      "description": "标准直齿轮最小齿数",
+      "notes": "少于17齿可能发生根切"
+    },
+    "min_teeth_modified": {
+      "value": 12,
+      "description": "变位齿轮最小齿数",
+      "notes": "采用变位可避免根切"
+    }
+  },
+  "gear_ratios": {
+    "recommended_range": {
+      "min": 1,
+      "max": 5,
+      "description": "单级传动比推荐范围",
+      "notes": "传动比大于5建议使用多级传动"
+    }
+  },
+  "examples": {
+    "gear_pair_2_1": {
+      "description": "传动比2:1的齿轮副",
+      "gear1": {
+        "module": 2,
+        "teeth": 20,
+        "pressure_angle": 20,
+        "bore_diameter": 10,
+        "hub_diameter": 25,
+        "hub_width": 5
+      },
+      "gear2": {
+        "module": 2,
+        "teeth": 40,
+        "pressure_angle": 20,
+        "bore_diameter": 10,
+        "hub_diameter": 30,
+        "hub_width": 5
+      },
+      "center_distance": 60,
+      "ratio": "2:1"
+    },
+    "gear_pair_high_speed": {
+      "description": "高速传动齿轮副示例",
+      "gear1": {
+        "module": 2.5,
+        "teeth": 24,
+        "pressure_angle": 20,
+        "bore_diameter": 15,
+        "hub_diameter": 35,
+        "hub_width": 8
+      },
+      "gear2": {
+        "module": 2.5,
+        "teeth": 48,
+        "pressure_angle": 20,
+        "bore_diameter": 20,
+        "hub_diameter": 45,
+        "hub_width": 10
+      },
+      "center_distance": 90,
+      "ratio": "2:1",
+      "notes": "适用于较高转速场合"
+    }
+  }
+}

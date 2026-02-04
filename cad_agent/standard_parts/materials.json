@@ -1,0 +1,213 @@
+{
+  "metadata": {
+    "name": "工程材料数据库",
+    "version": "1.0",
+    "description": "常用机械工程材料性能参数"
+  },
+  "categories": {
+    "carbon_steel": {
+      "name": "碳素结构钢",
+      "description": "普通碳素结构钢，广泛用于一般机械零件",
+      "materials": {
+        "Q235": {
+          "name": "碳素结构钢 Q235",
+          "standard": "GB/T 700-2006",
+          "tensile_strength": 375,
+          "yield_strength": 235,
+          "elastic_modulus": 206000,
+          "density": 7.85,
+          "hardness_HB": 120,
+          "applications": ["一般零件", "底板", "支架", "法兰", "焊接件"],
+          "characteristics": "塑性、韧性良好，焊接性能优良，成本低",
+          "heat_treatment": "热轧或正火",
+          "notes": "最常用的普通碳钢"
+        },
+        "Q355": {
+          "name": "碳素结构钢 Q355",
+          "standard": "GB/T 1591-2018",
+          "tensile_strength": 470,
+          "yield_strength": 355,
+          "elastic_modulus": 206000,
+          "density": 7.85,
+          "hardness_HB": 150,
+          "applications": ["承载结构件", "机座", "重型支架"],
+          "characteristics": "强度高于Q235，焊接性能良好",
+          "heat_treatment": "热轧或正火",
+          "notes": "原Q345钢，强度级别更高"
+        }
+      }
+    },
+    "quality_carbon_steel": {
+      "name": "优质碳素结构钢",
+      "description": "优质碳素结构钢，用于重要零件",
+      "materials": {
+        "45": {
+          "name": "优质碳素结构钢 45号",
+          "standard": "GB/T 699-2015",
+          "tensile_strength": 600,
+          "yield_strength": 355,
+          "elastic_modulus": 206000,
+          "density": 7.85,
+          "hardness_HB": 229,
+          "applications": ["轴", "齿轮", "键", "销", "连杆"],
+          "characteristics": "综合力学性能良好，淬透性低",
+          "heat_treatment": "调质处理（淬火+高温回火）",
+          "notes": "最常用的中碳结构钢，性价比高"
+        },
+        "40Cr": {
+          "name": "合金结构钢 40Cr",
+          "standard": "GB/T 3077-2015",
+          "tensile_strength": 980,
+          "yield_strength": 785,
+          "elastic_modulus": 206000,
+          "density": 7.85,
+          "hardness_HB": 207,
+          "applications": ["齿轮", "轴", "高强度螺栓", "重要传动件"],
+          "characteristics": "强度高，淬透性好，疲劳强度高",
+          "heat_treatment": "调质处理或表面淬火",
+          "notes": "最常用的合金钢，用于重要零件"
+        },
+        "35SiMn": {
+          "name": "合金结构钢 35SiMn",
+          "standard": "GB/T 3077-2015",
+          "tensile_strength": 885,
+          "yield_strength": 735,
+          "elastic_modulus": 206000,
+          "density": 7.85,
+          "hardness_HB": 229,
+          "applications": ["齿轮", "轴", "连杆"],
+          "characteristics": "性能接近40Cr，但更经济",
+          "heat_treatment": "调质处理",
+          "notes": "40Cr的代用材料"
+        }
+      }
+    },
+    "cast_iron": {
+      "name": "铸铁",
+      "description": "铸造性能良好，适合复杂形状零件",
+      "materials": {
+        "HT200": {
+          "name": "灰铸铁 HT200",
+          "standard": "GB/T 9439-2010",
+          "tensile_strength": 200,
+          "yield_strength": 0,
+          "elastic_modulus": 120000,
+          "density": 7.2,
+          "hardness_HB": 170,
+          "applications": ["机座", "轴承座", "低速齿轮", "箱体", "飞轮"],
+          "characteristics": "铸造性能好，减震性好，抗压强度高",
+          "heat_treatment": "去应力退火",
+          "notes": "最常用的灰铸铁，无屈服点"
+        },
+        "HT300": {
+          "name": "灰铸铁 HT300",
+          "standard": "GB/T 9439-2010",
+          "tensile_strength": 300,
+          "yield_strength": 0,
+          "elastic_modulus": 130000,
+          "density": 7.2,
+          "hardness_HB": 210,
+          "applications": ["高强度铸件", "重型机床床身"],
+          "characteristics": "强度高于HT200",
+          "heat_treatment": "去应力退火",
+          "notes": "用于高要求铸件"
+        },
+        "QT450-10": {
+          "name": "球墨铸铁 QT450-10",
+          "standard": "GB/T 1348-2019",
+          "tensile_strength": 450,
+          "yield_strength": 310,
+          "elastic_modulus": 150000,
+          "density": 7.1,
+          "hardness_HB": 160,
+          "applications": ["曲轴", "齿轮", "高强度铸件"],
+          "characteristics": "综合力学性能接近钢",
+          "heat_treatment": "正火或调质",
+          "notes": "可替代部分碳钢件"
+        }
+      }
+    },
+    "spring_steel": {
+      "name": "弹簧钢",
+      "description": "用于弹簧和弹性元件",
+      "materials": {
+        "65Mn": {
+          "name": "弹簧钢 65Mn",
+          "standard": "GB/T 1222-2016",
+          "tensile_strength": 980,
+          "yield_strength": 785,
+          "elastic_modulus": 206000,
+          "density": 7.85,
+          "hardness_HB": 285,
+          "applications": ["弹簧", "卡簧", "挡圈", "弹性元件"],
+          "characteristics": "弹性好，淬透性较好",
+          "heat_treatment": "淬火+中温回火",
+          "notes": "最常用的弹簧钢"
+        },
+        "60Si2Mn": {
+          "name": "弹簧钢 60Si2Mn",
+          "standard": "GB/T 1222-2016",
+          "tensile_strength": 1275,
+          "yield_strength": 1175,
+          "elastic_modulus": 206000,
+          "density": 7.85,
+          "hardness_HB": 321,
+          "applications": ["重要弹簧", "汽车悬挂弹簧"],
+          "characteristics": "高强度，高疲劳极限",
+          "heat_treatment": "淬火+中温回火",
+          "notes": "用于重要弹簧"
+        }
+      }
+    },
+    "stainless_steel": {
+      "name": "不锈钢",
+      "description": "耐腐蚀钢材",
+      "materials": {
+        "304": {
+          "name": "不锈钢 304",
+          "standard": "GB/T 20878-2007",
+          "tensile_strength": 520,
+          "yield_strength": 205,
+          "elastic_modulus": 193000,
+          "density": 7.93,
+          "hardness_HB": 187,
+          "applications": ["耐腐蚀零件", "食品机械", "化工设备"],
+          "characteristics": "良好的耐腐蚀性和耐热性",
+          "heat_treatment": "固溶处理",
+          "notes": "最常用的奥氏体不锈钢"
+        },
+        "316": {
+          "name": "不锈钢 316",
+          "standard": "GB/T 20878-2007",
+          "tensile_strength": 520,
+          "yield_strength": 205,
+          "elastic_modulus": 193000,
+          "density": 7.98,
+          "hardness_HB": 187,
+          "applications": ["海洋环境", "化工设备", "医疗器件"],
+          "characteristics": "耐腐蚀性优于304",
+          "heat_treatment": "固溶处理",
+          "notes": "含钼，耐氯化物腐蚀"
+        }
+      }
+    }
+  },
+  "selection_guide": {
+    "by_part_type": {
+      "gear": ["45", "40Cr", "35SiMn", "HT200", "QT450-10"],
+      "shaft": ["45", "40Cr", "35SiMn", "304"],
+      "spring": ["65Mn", "60Si2Mn"],
+      "plate": ["Q235", "Q355", "HT200", "304"],
+      "bracket": ["Q235", "Q355", "HT200", "304"],
+      "bearing_housing": ["HT200", "HT300", "QT450-10"]
+    },
+    "by_application": {
+      "general": ["Q235", "45"],
+      "high_load": ["Q355", "40Cr", "QT450-10"],
+      "high_speed": ["40Cr", "35SiMn"],
+      "corrosion": ["304", "316"],
+      "cast_complex": ["HT200", "HT300", "QT450-10"],
+      "elastic": ["65Mn", "60Si2Mn"]
+    }
+  }
+}

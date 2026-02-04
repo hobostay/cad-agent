@@ -1,0 +1,233 @@
+{
+  "metadata": {
+    "name": "螺栓标准库",
+    "version": "1.0",
+    "standard": "GB/T 5782-2016",
+    "description": "六角头螺栓标准系列"
+  },
+  "categories": {
+    "hex_bolt": {
+      "name": "六角头螺栓",
+      "description": "标准六角头螺栓",
+      "parts": {
+        "M3": {
+          "diameter": 3,
+          "thread_pitch": 0.5,
+          "head_width": 5.5,
+          "head_height": 2,
+          "washer_face": 5.8,
+          "notes": "小尺寸螺栓"
+        },
+        "M4": {
+          "diameter": 4,
+          "thread_pitch": 0.7,
+          "head_width": 7,
+          "head_height": 2.8,
+          "washer_face": 7.4,
+          "notes": ""
+        },
+        "M5": {
+          "diameter": 5,
+          "thread_pitch": 0.8,
+          "head_width": 8,
+          "head_height": 3.5,
+          "washer_face": 8.4,
+          "notes": ""
+        },
+        "M6": {
+          "diameter": 6,
+          "thread_pitch": 1.0,
+          "head_width": 10,
+          "head_height": 4,
+          "washer_face": 10.6,
+          "notes": "常用规格"
+        },
+        "M8": {
+          "diameter": 8,
+          "thread_pitch": 1.25,
+          "head_width": 13,
+          "head_height": 5.5,
+          "washer_face": 13.8,
+          "notes": "常用规格"
+        },
+        "M10": {
+          "diameter": 10,
+          "thread_pitch": 1.5,
+          "head_width": 17,
+          "head_height": 7,
+          "washer_face": 18,
+          "notes": "常用规格"
+        },
+        "M12": {
+          "diameter": 12,
+          "thread_pitch": 1.75,
+          "head_width": 19,
+          "head_height": 8,
+          "washer_face": 20.2,
+          "notes": "常用规格"
+        },
+        "M14": {
+          "diameter": 14,
+          "thread_pitch": 2.0,
+          "head_width": 22,
+          "head_height": 9,
+          "washer_face": 23.4,
+          "notes": ""
+        },
+        "M16": {
+          "diameter": 16,
+          "thread_pitch": 2.0,
+          "head_width": 24,
+          "head_height": 10,
+          "washer_face": 25.6,
+          "notes": "常用规格"
+        },
+        "M20": {
+          "diameter": 20,
+          "thread_pitch": 2.5,
+          "head_width": 30,
+          "head_height": 13,
+          "washer_face": 32,
+          "notes": "大尺寸螺栓"
+        },
+        "M24": {
+          "diameter": 24,
+          "thread_pitch": 3.0,
+          "head_width": 36,
+          "head_height": 15,
+          "washer_face": 38.5,
+          "notes": "大尺寸螺栓"
+        }
+      }
+    },
+    "hex_nut": {
+      "name": "六角螺母",
+      "description": "标准六角螺母",
+      "parts": {
+        "M3": {
+          "diameter": 3,
+          "width": 5.5,
+          "thickness_standard": 2.4,
+          "thickness_thin": 1.8,
+          "notes": ""
+        },
+        "M4": {
+          "diameter": 4,
+          "width": 7,
+          "thickness_standard": 3.2,
+          "thickness_thin": 2.2,
+          "notes": ""
+        },
+        "M5": {
+          "diameter": 5,
+          "width": 8,
+          "thickness_standard": 4.7,
+          "thickness_thin": 2.7,
+          "notes": ""
+        },
+        "M6": {
+          "diameter": 6,
+          "width": 10,
+          "thickness_standard": 5.2,
+          "thickness_thin": 3.2,
+          "notes": "常用规格"
+        },
+        "M8": {
+          "diameter": 8,
+          "width": 13,
+          "thickness_standard": 6.8,
+          "thickness_thin": 4,
+          "notes": "常用规格"
+        },
+        "M10": {
+          "diameter": 10,
+          "width": 17,
+          "thickness_standard": 8.4,
+          "thickness_thin": 5,
+          "notes": "常用规格"
+        },
+        "M12": {
+          "diameter": 12,
+          "width": 19,
+          "thickness_standard": 10.8,
+          "thickness_thin": 6,
+          "notes": "常用规格"
+        },
+        "M16": {
+          "diameter": 16,
+          "width": 24,
+          "thickness_standard": 14.8,
+          "thickness_thin": 8,
+          "notes": "常用规格"
+        },
+        "M20": {
+          "diameter": 20,
+          "width": 30,
+          "thickness_standard": 18,
+          "thickness_thin": 10,
+          "notes": "大尺寸螺母"
+        }
+      }
+    },
+    "washer": {
+      "name": "平垫圈",
+      "description": "标准平垫圈",
+      "parts": {
+        "M3": {
+          "inner_diameter": 3.2,
+          "outer_diameter": 7,
+          "thickness": 0.5,
+          "notes": ""
+        },
+        "M4": {
+          "inner_diameter": 4.3,
+          "outer_diameter": 9,
+          "thickness": 0.8,
+          "notes": ""
+        },
+        "M5": {
+          "inner_diameter": 5.3,
+          "outer_diameter": 10,
+          "thickness": 1,
+          "notes": ""
+        },
+        "M6": {
+          "inner_diameter": 6.4,
+          "outer_diameter": 12,
+          "thickness": 1.6,
+          "notes": "常用规格"
+        },
+        "M8": {
+          "inner_diameter": 8.4,
+          "outer_diameter": 16,
+          "thickness": 1.6,
+          "notes": "常用规格"
+        },
+        "M10": {
+          "inner_diameter": 10.5,
+          "outer_diameter": 20,
+          "thickness": 2,
+          "notes": "常用规格"
+        },
+        "M12": {
+          "inner_diameter": 13,
+          "outer_diameter": 24,
+          "thickness": 2.5,
+          "notes": "常用规格"
+        },
+        "M16": {
+          "inner_diameter": 17,
+          "outer_diameter": 30,
+          "thickness": 3,
+          "notes": "常用规格"
+        },
+        "M20": {
+          "inner_diameter": 21,
+          "outer_diameter": 37,
+          "thickness": 3,
+          "notes": "大尺寸垫圈"
+        }
+      }
+    }
+  }
+}

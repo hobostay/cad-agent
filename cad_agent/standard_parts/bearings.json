@@ -1,0 +1,99 @@
+{
+  "metadata": {
+    "name": "深沟球轴承标准库",
+    "version": "1.0",
+    "standard": "GB/T 276-2013",
+    "description": "62系列和63系列深沟球轴承"
+  },
+  "categories": {
+    "618_series": {
+      "name": "618系列（超薄）",
+      "description": "超薄型深沟球轴承",
+      "parts": {
+        "61800": {"inner": 10, "outer": 19, "width": 5},
+        "61801": {"inner": 12, "outer": 21, "width": 5},
+        "61802": {"inner": 15, "outer": 24, "width": 5},
+        "61803": {"inner": 17, "outer": 26, "width": 5},
+        "61804": {"inner": 20, "outer": 32, "width": 7},
+        "61805": {"inner": 25, "outer": 37, "width": 7},
+        "61806": {"inner": 30, "outer": 42, "width": 7},
+        "61807": {"inner": 35, "outer": 47, "width": 7},
+        "61808": {"inner": 40, "outer": 52, "width": 7},
+        "61809": {"inner": 45, "outer": 58, "width": 7},
+        "61810": {"inner": 50, "outer": 65, "width": 7}
+      }
+    },
+    "619_series": {
+      "name": "619系列（薄窄）",
+      "description": "薄窄型深沟球轴承",
+      "parts": {
+        "61900": {"inner": 10, "outer": 22, "width": 6},
+        "61901": {"inner": 12, "outer": 24, "width": 6},
+        "61902": {"inner": 15, "outer": 28, "width": 7},
+        "61903": {"inner": 17, "outer": 30, "width": 7},
+        "61904": {"inner": 20, "outer": 37, "width": 9},
+        "61905": {"inner": 25, "outer": 42, "width": 9},
+        "61906": {"inner": 30, "outer": 47, "width": 9},
+        "61907": {"inner": 35, "outer": 55, "width": 10},
+        "61908": {"inner": 40, "outer": 62, "width": 12},
+        "61909": {"inner": 45, "outer": 68, "width": 12},
+        "61910": {"inner": 50, "outer": 72, "width": 12}
+      }
+    },
+    "60_series": {
+      "name": "60系列（普通）",
+      "description": "普通型深沟球轴承",
+      "parts": {
+        "6000": {"inner": 10, "outer": 26, "width": 8},
+        "6001": {"inner": 12, "outer": 28, "width": 8},
+        "6002": {"inner": 15, "outer": 32, "width": 9},
+        "6003": {"inner": 17, "outer": 35, "width": 10},
+        "6004": {"inner": 20, "outer": 42, "width": 12},
+        "6005": {"inner": 25, "outer": 47, "width": 12},
+        "6006": {"inner": 30, "outer": 55, "width": 13},
+        "6007": {"inner": 35, "outer": 62, "width": 14},
+        "6008": {"inner": 40, "outer": 68, "width": 15},
+        "6009": {"inner": 45, "outer": 75, "width": 16},
+        "6010": {"inner": 50, "outer": 80, "width": 16}
+      }
+    },
+    "62_series": {
+      "name": "62系列（中宽）",
+      "description": "中宽型深沟球轴承（最常用）",
+      "parts": {
+        "6200": {"inner": 10, "outer": 30, "width": 9},
+        "6201": {"inner": 12, "outer": 32, "width": 10},
+        "6202": {"inner": 15, "outer": 35, "width": 11},
+        "6203": {"inner": 17, "outer": 40, "width": 12},
+        "6204": {"inner": 20, "outer": 47, "width": 14},
+        "6205": {"inner": 25, "outer": 52, "width": 15},
+        "6206": {"inner": 30, "outer": 62, "width": 16},
+        "6207": {"inner": 35, "outer": 72, "width": 17},
+        "6208": {"inner": 40, "outer": 80, "width": 18},
+        "6209": {"inner": 45, "outer": 85, "width": 19},
+        "6210": {"inner": 50, "outer": 90, "width": 20},
+        "6211": {"inner": 55, "outer": 100, "width": 21},
+        "6212": {"inner": 60, "outer": 110, "width": 22}
+      }
+    },
+    "63_series": {
+      "name": "63系列（宽）",
+      "description": "宽型深沟球轴承",
+      "parts": {
+        "6300": {"inner": 10, "outer": 35, "width": 11},
+        "6301": {"inner": 12, "outer": 37, "width": 12},
+        "6302": {"inner": 15, "outer": 42, "width": 13},
+        "6303": {"inner": 17, "outer": 47, "width": 14},
+        "6304": {"inner": 20, "outer": 52, "width": 15},
+        "6305": {"inner": 25, "outer": 62, "width": 17},
+        "6306": {"inner": 30, "outer": 72, "width": 19},
+        "6307": {"inner": 35, "outer": 80, "width": 21},
+        "6308": {"inner": 40, "outer": 90, "width": 23},
+        "6309": {"inner": 45, "outer": 100, "width": 25},
+        "6310": {"inner": 50, "outer": 110, "width": 27},
+        "6311": {"inner": 55, "outer": 120, "width": 29},
+        "6312": {"inner": 60, "outer": 130, "width": 31}
+      }
+    }
+  }
+}

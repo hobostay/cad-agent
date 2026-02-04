@@ -1,0 +1,41 @@
+{
+  "name": "简单齿轮传动组件",
+  "description": "一个大齿轮和一个小齿轮啮合的装配体示例",
+  "output": "gear_assembly.dxf",
+  "parts": [
+    {
+      "type": "gear",
+      "parameters": {
+        "module": 2,
+        "teeth": 40,
+        "pressure_angle": 20,
+        "bore_diameter": 20,
+        "hub_diameter": 35,
+        "hub_width": 10
+      },
+      "position": [0, 0]
+    },
+    {
+      "type": "gear",
+      "parameters": {
+        "module": 2,
+        "teeth": 20,
+        "pressure_angle": 20,
+        "bore_diameter": 15,
+        "hub_diameter": 25,
+        "hub_width": 8
+      },
+      "position": [60, 0]
+    },
+    {
+      "type": "plate",
+      "parameters": {
+        "length": 150,
+        "width": 120,
+        "hole_diameter": 8,
+        "corner_offset": 10
+      },
+      "position": [-30, -60]
+    }
+  ]
+}

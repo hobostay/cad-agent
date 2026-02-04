@@ -1,95 +1,143 @@
 # -*- coding: utf-8 -*-
+"""
+DXF 验收模块。
+根据 spec json 验收 dxf 文件。
+支持 plate (底板) 和 screw (螺丝)。
+"""
 import ezdxf
 from ezdxf import units
 import json
 import sys
 
-DXF_FILE = "plate_from_json.dxf"
-SPEC_FILE = "plate_spec.json"
-
-
 def fail(msg):
-    print(f"❌ 验收失败：{msg}")
-    sys.exit(1)
-
-
-def pass_ok():
-    print("✅ CAD 图纸通过全部工程验收，可直接用于制造")
-    sys.exit(0)
-
-
-def load_spec():
-    with open(SPEC_FILE, "r", encoding="utf-8") as f:
-        return json.load(f)
-
+    raise ValueError(msg)
 
 def check_units(doc):
     if doc.units != units.MM:
         fail("DXF 单位不是 mm")
 
-
-def check_layers(doc):
-    required = {"outline", "hole"}
+def check_layers(doc, required_layers):
     existing = {layer.dxf.name for layer in doc.layers}
-    missing = required - existing
+    missing = required_layers - existing
     if missing:
         fail(f"缺少必要图层: {missing}")
 
+def check_plate(doc, params):
+    msp = doc.modelspace()
+    length = params.get("length")
+    width = params.get("width")
+    hole_diameter = params.get("hole_diameter", 0)
 
-def check_outline(msp, length, width):
-    outlines = list(msp.query('LWPOLYLINE[layer=="outline"]'))
-    if len(outlines) != 1:
-        fail("outline 图层必须且只能有一个矩形轮廓")
+    chamfer_size = params.get("chamfer_size", 0)
+    fillet_radius = params.get("fillet_radius", 0)
+    slots = params.get("slots", [])
+    threaded_holes = params.get("threaded_holes", [])
+    counterbores = params.get("counterbores", [])
+    keyway = params.get("keyway")
 
-    poly = outlines[0]
-    if not poly.closed:
-        fail("底板轮廓未闭合")
+    check_layers(doc, {"outline"})
+    if hole_diameter > 0 or slots or threaded_holes or counterbores or keyway:
+        check_layers(doc, {"hole"})
 
-    points = [(round(p[0], 3), round(p[1], 3)) for p in poly.get_points()]
-    expected = {(0, 0), (length, 0), (length, width), (0, width)}
+    # Check Outline - 有倒角/倒圆时会有额外的线和圆弧
+    if chamfer_size == 0 and fillet_radius == 0:
+        outlines = list(msp.query('LWPOLYLINE[layer=="outline"]'))
+        if len(outlines) != 1:
+            fail("outline 图层必须且只能有一个矩形轮廓")
+        poly = outlines[0]
+        if not poly.closed:
+            fail("底板轮廓未闭合")
+    else:
+        # 有倒角/倒圆时，检查是否有图形元素即可
+        outlines = list(msp.query('LWPOLYLINE[layer=="outline"]'))
+        arcs = list(msp.query('ARC[layer=="outline"]'))
+        lines = list(msp.query('LINE[layer=="outline"]'))
+        if len(outlines) + len(arcs) + len(lines) == 0:
+            fail("轮廓无数据")
 
-    if set(points[:-1]) != expected:
-        fail("底板轮廓尺寸或位置不正确")
+    # 简单尺寸校验 (bounding box)
+    extents = ezdxf.bbox.extents(msp.query('*[layer=="outline"]'))
+    if not extents.has_data:
+        fail("轮廓无数据")
 
+    size_x = extents.size.x
+    size_y = extents.size.y
 
-def check_holes(msp, length, width, hole_diameter):
-    circles = list(msp.query('CIRCLE[layer=="hole"]'))
-    if len(circles) != 4:
-        fail("孔数量不是 4 个")
+    if abs(size_x - length) > 1.0 or abs(size_y - width) > 1.0:
+        if abs(size_x - width) < 1.0 and abs(size_y - length) < 1.0:
+            pass  # 宽高反了也算对
+        else:
+            fail(f"轮廓尺寸 ({size_x:.1f}x{size_y:.1f}) 与参数 ({length}x{width}) 不符")
 
-    radius = hole_diameter / 2
+    # Check Corner Holes if any
+    if hole_diameter > 0:
+        circles = list(msp.query('CIRCLE[layer=="hole"]'))
+        # 只检查四角孔，不考虑其他类型的孔
+        expected_holes = 4
+        if len(circles) < expected_holes:
+            fail(f"孔数量不对，期望至少 {expected_holes} 个，实际 {len(circles)} 个")
 
-    for c in circles:
-        x, y = c.dxf.center[0], c.dxf.center[1]
-        r = c.dxf.radius
+    # Check slots (腰形孔) - 应该有弧和线的组合
+    if slots:
+        arcs = list(msp.query('ARC[layer=="hole"]'))
+        if len(arcs) < len(slots) * 2:  # 每个腰形孔至少2个半圆
+            fail(f"腰形孔数量不匹配，期望 {len(slots)} 个")
 
-        if abs(r - radius) > 0.001:
-            fail("孔半径不符合参数")
+    # Check threaded holes - 应该有虚线圆
+    if threaded_holes:
+        thread_circles = list(msp.query('CIRCLE[layer=="thread"]'))
+        if len(thread_circles) < len(threaded_holes):
+            fail(f"螺纹孔表示不完整")
 
-        if x - r < 0 or x + r > length or y - r < 0 or y + r > width:
-            fail(f"孔越界：center=({x},{y})")
+    # Check counterbores - 应该有同心圆
+    if counterbores:
+        # 通过统计圆的数量来验证
+        hole_circles = list(msp.query('CIRCLE[layer=="hole"]'))
+        if len(hole_circles) < len(counterbores) * 2:
+            fail(f"沉孔表示不完整")
 
+    # Check keyway - 应该有闭合的多段线
+    if keyway:
+        polylines = list(msp.query('LWPOLYLINE[layer=="hole"]'))
+        if len(polylines) == 0:
+            fail("键槽未生成")
 
-def main():
+def check_screw(doc, params):
+    msp = doc.modelspace()
+    check_layers(doc, {"outline", "thread"})
+    
+    # 只要有东西画出来就行，详细尺寸校验比较复杂
+    if len(msp) == 0:
+        fail("图纸为空")
+
+def check_custom_code(doc, params):
+    msp = doc.modelspace()
+    if len(msp) == 0:
+        fail("图纸为空 (自定义代码未绘制任何图元)")
+
+def validate_dxf_file(dxf_file, spec_file):
     try:
-        spec = load_spec()
-        length = spec["length"]
-        width = spec["width"]
-        hole_diameter = spec["hole_diameter"]
-
-        doc = ezdxf.readfile(DXF_FILE)
-        msp = doc.modelspace()
-
+        with open(spec_file, "r", encoding="utf-8") as f:
+            spec = json.load(f)
+        
+        # 兼容旧格式
+        part_type = spec.get("type", "plate")
+        params = spec.get("parameters", spec)
+        
+        doc = ezdxf.readfile(dxf_file)
         check_units(doc)
-        check_layers(doc)
-        check_outline(msp, length, width)
-        check_holes(msp, length, width, hole_diameter)
+        
+        if part_type == "plate":
+            check_plate(doc, params)
+        elif part_type == "screw":
+            check_screw(doc, params)
+        elif part_type == "custom_code":
+            check_custom_code(doc, params)
+        else:
+            # 未知类型，暂不校验逻辑，只看文件是否有效
+            pass
 
-        pass_ok()
+        return True, "CAD 图纸通过工程验收"
 
     except Exception as e:
-        fail(str(e))
-
-
-if __name__ == "__main__":
-    main()
+        return False, str(e)

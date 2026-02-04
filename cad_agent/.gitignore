@@ -1,0 +1,34 @@
+# Configuration files with sensitive data
+config.env.local
+*.env.local
+
+# Output files
+agent_output.dxf
+agent_output.stl
+agent_spec.json
+temp_*.dxf
+assembly.dxf
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Memory
+agent_memory.json

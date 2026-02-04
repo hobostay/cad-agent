@@ -1,0 +1,18 @@
+# CAD Agent Requirements
+
+# Core dependencies
+ezdxf>=1.1.0
+python-dotenv>=1.0.0
+requests>=2.31.0
+
+# Web interface
+streamlit>=1.30.0
+fastapi>=0.110.0
+uvicorn>=0.27.0
+
+# 3D generation
+numpy-stl>=2.10.0
+trimesh>=3.9.0
+
+# Utilities
+numpy>=1.21.0
