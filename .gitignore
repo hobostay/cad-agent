@@ -12,6 +12,7 @@ build/
 # 配置（含密钥，不提交）
 .env
 .env.local
+cad_agent/config.env.local
 
 # IDE / OS
 .idea/
@@ -22,6 +23,13 @@ build/
 
 # 生成文件（可本地重新生成）
 cad_agent/plate_from_json.dxf
+cad_agent/agent_memory.json
+cad_agent/agent_spec.json
+cad_agent/temp_spec.json
+cad_agent/temp_part_*.dxf
+cad_agent/*.dxf
+cad_agent/*.stl
+cad_agent/*.log
 
 # ezdxf 缓存
 .cache/

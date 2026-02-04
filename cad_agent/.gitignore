@@ -8,6 +8,13 @@ agent_output.stl
 agent_spec.json
 temp_*.dxf
 assembly.dxf
+*.stl
+*.dxf
+
+# Backup files
+*.backup
+*.bak
+*~
 
 # Python
 .venv/
@@ -30,5 +37,9 @@ Thumbs.db
 # Logs
 *.log
 
-# Memory
+# Memory and data
 agent_memory.json
+*.json.temp
+
+# Test files
+test_*
